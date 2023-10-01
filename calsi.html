@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(162, 204, 214, 0.729);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 20px;
+            border: 2px solid rgb(240, 88, 88);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+    <title>Interest Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Interest Calculator</h1>
+        <form id="interest-form">
+            <div class="input-group">
+                <label for="principal">Principal Amount(सिद्धांत मूल्य):</label>
+                <input type="number" id="principal" required>
+            </div>
+            <div class="input-group">
+                <label for="rate">Interest Rate(ब्याज दर) (%):</label>
+                <input type="number" id="rate" required>
+            </div>
+            <div class="input-group">
+                <label for="years">Number of Years (साल):</label>
+                <input type="number" id="years" required>
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('interest-form');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const principal = parseFloat(document.getElementById('principal').value);
+                const rate = parseFloat(document.getElementById('rate').value);
+                const years = parseFloat(document.getElementById('years').value);
+
+                const interest = (principal * rate * years) / 100;
+
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = 'Interest: ₹' + interest.toFixed(2);
+            });
+        });
+    </script>
+</body>
+</html>
